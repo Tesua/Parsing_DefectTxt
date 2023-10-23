@@ -6,7 +6,7 @@ from eunjeon import Mecab
 
 
 # mecab 문서 위치
-mecab = Mecab(dicpath='C:/mecab/mecab-ko-dic')
+mecab = Mecab(dicpath='C:/Project/mecab/mecab-ko-dic')
 
 # MSSQL 연결
 connect = pymssql.connect(server=r"(local)", database="TEST", user="sa", password="unimes@2018")

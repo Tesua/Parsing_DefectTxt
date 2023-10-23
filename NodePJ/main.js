@@ -24,21 +24,21 @@ http.listen(7777, function(){
   console.log('server is ready!!'.rainbow);
 });
 
-/*
+
 app.get('/', function(req, res){
-    const python = spawn('python', ['GetData.py']);
-    python.stdout.on('data', (data) => {
-     dataToSend = iconv.decode(data, 'euc-kr');
-    })
-     python.on('close', (code) => {
-      res.send(dataToSend);
-   })
+  const python = spawn('python', ['./NodePJ/test.py']);
+  python.stdout.on('data', (data) => {
+    dataToSend = iconv.decode(data, 'euc-kr');
+  })
+    python.on('close', (code) => {
+    res.send(dataToSend);
+  })
 });
-*/
+
 
 //mecab 실행
 app.get('/mecab', function(req, res){
-  const python = spawn('python', ['mecab.py']);
+  const python = spawn('python', ['./NodePJ/mecab.py']);
   python.stdout.on('data', (data) => {
    dataToSend = iconv.decode(data, 'euc-kr');
   })
@@ -53,7 +53,7 @@ app.get('/select/:type/:item', function(req, res){
   let val = req.params.item.toUpperCase()
 
   if ((type == 'PJT' || type == 'ITEM')) {
-    const python = spawn('python', ['GetData.py', type, val]);
+    const python = spawn('python', ['./NodePJ/GetData.py', type, val]);
     python.stdout.on('data', (data) => {
     dataToSend = iconv.decode(data, 'euc-kr');
     })
@@ -71,7 +71,8 @@ app.get('/select/:type/:item', function(req, res){
 //사용자 사전 추가
 app.get('/SetDictionary/:word', function(req, res){
   let val = req.params.word
-  const python = spawn('python', ['UserDictionary.py', val], {cwd : "C:\\mecab"} );
+  const python = spawn('python', ['./mecab/UserDictionary.py', val] );
+  //const python = spawn('python', ['UserDictionary.py', val], {cwd : "C:\\Project\\mecab"} );
   python.stdout.on('data', (data) => {
    dataToSend = data.toString();
   })
