@@ -24,7 +24,6 @@ http.listen(7777, function(){
   console.log('server is ready!!'.rainbow);
 });
 
-
 app.get('/', function(req, res){
   const python = spawn('python', ['./NodePJ/test.py']);
   python.stdout.on('data', (data) => {
@@ -34,7 +33,6 @@ app.get('/', function(req, res){
     res.send(dataToSend);
   })
 });
-
 
 //mecab 실행
 app.get('/mecab', function(req, res){

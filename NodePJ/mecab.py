@@ -1,12 +1,13 @@
 from collections import Counter
 from itertools import count
+import os
 import pymssql
 from collections import Counter
 from eunjeon import Mecab
 
 
 # mecab 문서 위치
-mecab = Mecab(dicpath='C:/Project/mecab/mecab-ko-dic')
+mecab = Mecab(dicpath=os.path.join(os.getcwd(), 'mecab/mecabrc'))
 
 # MSSQL 연결
 connect = pymssql.connect(server=r"(local)", database="TEST", user="sa", password="unimes@2018")
