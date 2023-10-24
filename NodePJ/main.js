@@ -71,7 +71,7 @@ app.get('/select/:type/:item', function(req, res){
 //사용자 사전 추가
 app.get('/SetDictionary/:word', function(req, res){
   let val = req.params.word
-  const python = spawn('python', ['./mecab/UserDictionary.py', val] );
+  const python = spawn('python', ['./NodePJ/UserDictionary.py', val] );
   //const python = spawn('python', ['UserDictionary.py', val], {cwd : "C:\\Project\\mecab"} );
   python.stdout.on('data', (data) => {
    dataToSend = data.toString();
