@@ -8,6 +8,7 @@ from eunjeon import Mecab
 
 # mecab 문서 위치
 mecab = Mecab(dicpath=os.path.join(os.getcwd(), 'mecab/mecabrc'))
+#Mecab(dicpath='C:/mecab/mecab-ko-dic')
 
 # MSSQL 연결
 connect = pymssql.connect(server=r"(local)", database="TEST", user="sa", password="unimes@2018")
@@ -110,5 +111,5 @@ for project in project_all:
     connect.commit()
 
 connect.close()
-print("Sueccess_Mecab")
+print("Success_Mecab")
 

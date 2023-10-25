@@ -24,6 +24,7 @@ http.listen(7777, function(){
   console.log('server is ready!!'.rainbow);
 });
 
+// Test용 호출 ./NodePJ/test.py
 app.get('/', function(req, res){
   const python = spawn('python', ['./NodePJ/test.py']);
   python.stdout.on('data', (data) => {
@@ -34,7 +35,7 @@ app.get('/', function(req, res){
   })
 });
 
-//mecab 실행
+//mecab 실행   ./NodePJ/mecab.py
 app.get('/mecab', function(req, res){
   const python = spawn('python', ['./NodePJ/mecab.py']);
   python.stdout.on('data', (data) => {
@@ -45,7 +46,7 @@ app.get('/mecab', function(req, res){
  })
 });
 
-//품목 or 플랫폼별 결과 추출
+//품목 or 플랫폼별 결과 추출  './NodePJ/GetData.py'
 app.get('/select/:type/:item', function(req, res){
   let type = req.params.type.toUpperCase()
   let val = req.params.item.toUpperCase()
@@ -66,7 +67,7 @@ app.get('/select/:type/:item', function(req, res){
   
 });
 
-//사용자 사전 추가
+//사용자 사전 추가   './NodePJ/UserDictionary.py'
 app.get('/SetDictionary/:word', function(req, res){
   let val = req.params.word
   const python = spawn('python', ['./NodePJ/UserDictionary.py', val] );

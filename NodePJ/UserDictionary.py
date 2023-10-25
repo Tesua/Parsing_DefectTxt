@@ -11,4 +11,4 @@ with open(r"mecab\mecab-ko-dic\user-custom.csv", 'a', newline='', encoding='utf-
 p = subprocess.Popen(["powershell.exe", "mecab\\tools\\compile-win.ps1"], stdout=sys.stdout)
 p.communicate()
 
-print("Sucess")
+print("Success_Dictionary")
