@@ -1,7 +1,7 @@
 import os
 from eunjeon import Mecab
 
-print(os.path.join(os.getcwd()))
+#print(os.path.join(os.getcwd())) 실행 경로
       
 mecab = Mecab(dicpath=os.path.join(os.getcwd(), 'mecab/mecabrc'))
 #Mecab(dicpath='C:/mecab/mecab-ko-dic')

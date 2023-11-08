@@ -24,14 +24,23 @@ http.listen(7777, function(){
   console.log('server is ready!!'.rainbow);
 });
 
+// REST API 메소드
+// 첫번째 인자: End Point
+// 두번째 인자: 콜백함수 - 이 함수는 두개의 인자를 받는다.
+// '/user'에 get 요청이 오면 아래의 콜백함수가 실행이되는 것이다.
+
 // Test용 호출 ./NodePJ/test.py
 app.get('/', function(req, res){
+  // 첫번째 인자 req: 클라이언트에서 요청이올 때, ReqBody, ReqHeader, url 등등 그런 정보들이 모두 들어있다.
+  // 두번째 인자 res: 클라이언트에 응답할 때 필요한 모든 정보들이 들어있다. 
+  // 지금부터 저희가 작성할 내용 외에도 기본적으로 들어가야되는 네트워크 정보라던지 그런 것들이 모두 여기 들어있다.
   const python = spawn('python', ['./NodePJ/test.py']);
   python.stdout.on('data', (data) => {
     dataToSend = iconv.decode(data, 'euc-kr');
   })
     python.on('close', (code) => {
     res.send(dataToSend);
+    //res.json(dataToSend);
   })
 });
 
