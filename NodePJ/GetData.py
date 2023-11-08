@@ -11,9 +11,9 @@ cursor = connect.cursor()
 
 #Type에 따른 분기
 if type == "PJT":
-    query = "select * From pjt_summary(nolock) where project = %s FOR JSON AUTO"
+    query = "select Project, Name, Count, Total, convert(nvarchar(10),Rate) as Rate, Option1 From pjt_summary(nolock) where project = %s FOR JSON AUTO"
 else :
-    query = "select * From item_summary(nolock) where Item = %s FOR JSON AUTO"
+    query = "select Item, Name, Count, Total, convert(nvarchar(10),Rate) as Rate, Option1 From item_summary(nolock) where Item = %s FOR JSON AUTO"
 
 
 # 쿼리실행
